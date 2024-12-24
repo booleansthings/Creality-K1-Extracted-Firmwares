@@ -34,8 +34,6 @@ if [ $# -eq 1  -o $# -eq 2 ]; then
             echo -n $output | dd of=$BLK bs=512 count=1 2>/dev/null
             sync
         else
-            # Caution:
-            # We should only support to clear pcba_test flag!
             exit 1
         fi
     elif [ $# -eq 2 ]; then
@@ -61,6 +59,10 @@ if [ $# -eq 1  -o $# -eq 2 ]; then
                 # should clear all first, and then write!
                 exit 1
             fi
+        elif [ "$PARAM" = "pcba_test" -a "x$PCBA_TEST" = "x0" -a "x$2" = "x1" ]; then
+            output="$SN;$MAC;$MODEL;$BOARD;1;$MACHINE_SN;$STRUCTURE_VERSION;;"
+            echo -n $output | dd of=$BLK bs=512 count=1 2>/dev/null
+            sync
         fi
     fi
 

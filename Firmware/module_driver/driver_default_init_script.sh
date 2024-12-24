@@ -21,6 +21,7 @@ sh hci_uart_h5_kernel_4_4_94.sh
 sh lcd_gc9503cv_ue_480_800.sh
 sh lcd_st7701_9bit_spi_dc_480_800.sh
 sh lcd_st7701_9bit_spi_pj_480_800.sh
+sh lcd_st7701_9bit_spi_pj_lc_480_800.sh
 sh lcd_st7701_9bit_spi_tjc_480_800.sh
 sh lcd_st7701_9bit_spi_tjc_lc_480_800.sh
 sh soc_efuse.sh

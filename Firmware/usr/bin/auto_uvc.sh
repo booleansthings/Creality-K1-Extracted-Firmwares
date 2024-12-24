@@ -34,8 +34,16 @@ fw_info()
     [ -x /usr/bin/cam_util ] && {
         FwVersion=$(cam_util -i $1 -g | grep -w FwVersion | awk -F ' ' -e '{print $2}')
         if [ "x$FwVersion" != "x" ]; then
-            manufactory=${FwVersion:15:9}
-            cur_version=${FwVersion:25:6}
+            case $FwVersion in
+                STD*)
+                    manufactory=$(echo $FwVersion | cut -d '_' -f 1)
+                    cur_version=$(echo $FwVersion | cut -d '_' -f 2)
+                    ;;
+                *)
+                    manufactory=${FwVersion:15:9}
+                    cur_version=${FwVersion:25:6}
+                    ;;
+            esac
 
             case $manufactory in
                 "STsmart_-" | "STJC-000I")

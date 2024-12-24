@@ -77,7 +77,7 @@ add)
         json_cleanup
         sync
 
-#        [ -f $LOAD_DONE ] || $PWR_FILE off
+        [ -f $LOAD_DONE ] || $PWR_FILE off
     fi
     ;;
 remove)
